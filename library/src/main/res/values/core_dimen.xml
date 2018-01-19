@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Used by the list view recycle view to specify distance between cells-->
+    <dimen name="vertical_cell_space">10dp</dimen>
+
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Id specific values used in the core part of the code-->
+    <!--View ID values that must be used in a custom dialogue layout to correctly work with FragmentDialogue class-->
+    <!--TextView id for a title-->
+    <item name="dlg_title" type="id" />
+    <!--TextView id for a message-->
+    <item name="dlg_message" type="id" />
+    <!--Button id for a positive button-->
+    <item name="dlg_positive_button" type="id" />
+    <!--Button id for a negative button-->
+    <item name="dlg_negative_button" type="id" />
+</resources>
