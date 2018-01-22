@@ -5,19 +5,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 27
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles 'library-proguard-rules.pro'
-        }
+
+        consumerProguardFiles 'library-proguard-rules.pro'
     }
 
     sourceSets {
@@ -35,7 +30,7 @@ android {
 
 dependencies {
     def materialDialoguesVersion = "0.9.6.0"
-    def androidSupportVersion = "27.0.2" //"""26.1.0"
+    def androidSupportVersion = "26.1.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
@@ -44,7 +39,7 @@ dependencies {
     kapt "com.android.databinding:compiler:$gradle_plugin_version"
 
     implementation "com.android.support:appcompat-v7:$androidSupportVersion"
-    implementation  "com.android.support:customtabs:$androidSupportVersion"
+    implementation "com.android.support:customtabs:$androidSupportVersion"
     implementation "com.android.support:recyclerview-v7:$androidSupportVersion"
     implementation "com.android.support:support-v13:$androidSupportVersion"
 
@@ -56,8 +51,4 @@ dependencies {
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
