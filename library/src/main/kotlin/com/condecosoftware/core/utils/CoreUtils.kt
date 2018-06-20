@@ -1,6 +1,7 @@
 package com.condecosoftware.core.utils
 
 import android.content.Context
+import android.os.IBinder
 import android.text.InputFilter
 import android.text.Spanned
 import android.view.View
@@ -29,6 +30,7 @@ object CoreUtils {
     /**
      * Find first instance of the specified type
      */
+    @JvmStatic
     fun <T : Any> getType(forType: KClass<T>, objects: Iterable<Any?>): T? {
         objects.forEach { listener ->
             if (forType.isInstance(listener))
@@ -41,6 +43,7 @@ object CoreUtils {
      * Function that iterates through the view group and hides keyboard for any view that has it.
      * Also ot calls clearFocus function on the found view.
      */
+    @JvmStatic
     fun dismissKeyboard(view: View): Boolean {
         val context = view.context
         //Hide the keyboard
@@ -71,6 +74,14 @@ object CoreUtils {
             foundActiveView.clearFocus()
         }
         return result
+    }
+
+    @JvmStatic
+    fun dismissKeyboard(context: Context, token: IBinder) {
+        //Hide the keyboard
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+                ?: return
+        imm.hideSoftInputFromWindow(token, 0)
     }
 }
 

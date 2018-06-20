@@ -40,6 +40,7 @@ object ViewUtils {
     /**
      * Sets specified font to all TextViews in the specified view container.
      */
+    @JvmStatic
     fun setTextViewsFont(viewGroup: ViewGroup,
                          typeFaceAssetPath: String) {
 
@@ -52,6 +53,7 @@ object ViewUtils {
     /**
      * Function that sets typeface on all it's TextView children
      */
+    @JvmStatic
     private fun setTextViewsFont(viewGroup: ViewGroup,
                                  typeface: Typeface) {
 
@@ -64,6 +66,7 @@ object ViewUtils {
         }
     }
 
+    @JvmStatic
     fun setLetterSpacing(viewGroup: ViewGroup, spacing: Float) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
             return
@@ -84,6 +87,7 @@ object ViewUtils {
      * @param bundle       Bundle to save data in.
      * @param recyclerView Reference to a recycler view.
      */
+    @JvmStatic
     fun saveRecyclerViewPosition(
             bundle: Bundle?, recyclerView: RecyclerView?) {
         if (bundle == null)
@@ -103,6 +107,7 @@ object ViewUtils {
      * @param bundle       Bundle to save data in.
      * @param recyclerView Reference to a recycler view.
      */
+    @JvmStatic
     fun restoreRecyclerViewPosition(
             bundle: Bundle?, recyclerView: RecyclerView?) {
 
@@ -128,6 +133,7 @@ object ViewUtils {
      *                 height accordingly.
      * @return On success a reference to a vector drawable
      */
+    @JvmStatic
     fun getScaledDrawable(context: Context,
                           @DrawableRes resId: Int,
                           newWidth: Float = 0f): Drawable? {

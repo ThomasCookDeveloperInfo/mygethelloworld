@@ -36,16 +36,16 @@ class ApplicationPreferences(private val prefs: SharedPreferences) {
      * Return editor for manipulating preferences
      */
     private val editor: SharedPreferences.Editor
-        get() {
-            var editor = editorAtomicReference.get()
-            if (editor == null) {
-                editor = prefs.edit()
-                if (!editorAtomicReference.compareAndSet(null, editor)) {
-                    editor = editorAtomicReference.get()
+        get() = editorAtomicReference.get()
+                ?: run {
+                    val edt = prefs.edit()
+                    if (editorAtomicReference.compareAndSet(null, edt)) {
+                        edt
+                    } else {
+                        editorAtomicReference.get()
+                    }
                 }
-            }
-            return editor
-        }
+
 
     /**
      * Call to apply any preferences changes.

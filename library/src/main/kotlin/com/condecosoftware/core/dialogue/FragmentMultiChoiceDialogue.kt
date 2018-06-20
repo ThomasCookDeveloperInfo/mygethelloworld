@@ -93,12 +93,13 @@ class FragmentMultiChoiceDialogue : FragmentDialogueBase() {
         //Set positive button text
         builder.positiveText(args.getString(ARG_BUTTON_TEXT, ""))
         builder.onPositive { materialDialog, _ ->
-            val listener = CoreUtils.getType(CoreUtils.ListenerProvider::class, arrayListOf(parentFragment, activity))
-                    ?.getListenerForType(IListener::class) ?: return@onPositive
-            val selection = materialDialog.selectedIndices ?: return@onPositive
+            CoreUtils.getType(CoreUtils.ListenerProvider::class, arrayListOf(parentFragment, activity))
+                    ?.getListenerForType(IListener::class)?.also { listener ->
+                        val selection = materialDialog.selectedIndices ?: return@onPositive
 
-            listener.onMultiChoiceSelected(dialogueTag, selection,
-                    (materialDialog.items ?: emptyList()), callerArgs)
+                        listener.onMultiChoiceSelected(dialogueTag, selection,
+                                (materialDialog.items ?: emptyList()), callerArgs)
+                    }
         }
 
         return builder.build()

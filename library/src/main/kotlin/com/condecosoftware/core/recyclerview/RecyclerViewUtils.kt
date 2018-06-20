@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView
  * Helper utility functions for sending notifications to a [RecyclerView]
  */
 object RecyclerViewUtils {
+    @JvmStatic
     fun notifyItemRangeInserted(
             recyclerView: RecyclerView,
             adapter: RecyclerView.Adapter<*>, startPos: Int, itemCount: Int) {
@@ -21,12 +22,14 @@ object RecyclerViewUtils {
         }
     }
 
+    @JvmStatic
     fun notifyItemInserted(
             recyclerView: RecyclerView,
             adapter: RecyclerView.Adapter<*>, startPos: Int) {
         notifyItemRangeInserted(recyclerView, adapter, startPos, 1)
     }
 
+    @JvmStatic
     fun notifyItemRangeRemoved(
             recyclerView: RecyclerView,
             adapter: RecyclerView.Adapter<*>, startPos: Int, itemCount: Int) {
@@ -38,12 +41,14 @@ object RecyclerViewUtils {
         }
     }
 
+    @JvmStatic
     fun notifyItemRemoved(
             recyclerView: RecyclerView,
             adapter: RecyclerView.Adapter<*>, startPos: Int) {
         notifyItemRangeRemoved(recyclerView, adapter, startPos, 1)
     }
 
+    @JvmStatic
     fun notifyItemRangeChanged(
             recyclerView: RecyclerView,
             adapter: RecyclerView.Adapter<*>, startPos: Int, itemCount: Int) {
@@ -55,6 +60,7 @@ object RecyclerViewUtils {
         }
     }
 
+    @JvmStatic
     fun notifyItemMoved(recyclerView: RecyclerView,
                         adapter: RecyclerView.Adapter<*>,
                         fromPost: Int, toPos: Int) {
@@ -66,12 +72,14 @@ object RecyclerViewUtils {
 
     }
 
+    @JvmStatic
     fun notifyItemChanged(
             recyclerView: RecyclerView,
             adapter: RecyclerView.Adapter<*>, startPos: Int) {
         notifyItemRangeChanged(recyclerView, adapter, startPos, 1)
     }
 
+    @JvmStatic
     fun clearRecyclerView(recyclerView: RecyclerView,
                           adapter: RecyclerViewBase.ViewAdapter<*>,
                           startPos: Int, length: Int) {

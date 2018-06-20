@@ -47,7 +47,7 @@ object RecyclerViewBase {
      * [RecyclerView] adapter used to manager our custom view holders
     </VH> */
     abstract class ViewAdapter<VH : ViewHolderBase>(
-            private val viewHolderCreator: SparseArray<ViewHolderBaseCreator<VH>>,
+            private val viewHolderCreator: SparseArray<out ViewHolderBaseCreator<VH>>,
             private val dataList: MutableList<ViewModelBase>) : RecyclerView.Adapter<VH>() {
 
         private var viewHolderCallback: ViewHolderCallback? = null
@@ -68,10 +68,11 @@ object RecyclerViewBase {
             return this.dataList.size
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH? {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
             //Possibly add click listeners
             val creator = viewHolderCreator.get(viewType)
             return creator?.createViewHolder(parent, this.viewHolderCallback)
+                    ?: throw IllegalStateException("Recycler view holder could not be inflated.")
         }
 
         override fun onBindViewHolder(holder: VH, position: Int) {
@@ -79,7 +80,7 @@ object RecyclerViewBase {
             if (viewData != null) {
                 holder.bindAdapterData(viewData)
             } else {
-                throw IllegalStateException("Failed to find get view data to bind for position: " + position)
+                throw IllegalStateException("Failed to find get view data to bind for position: $position")
             }
         }
 

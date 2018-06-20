@@ -1,5 +1,6 @@
 package com.condecosoftware.core.dialogue
 
+import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
@@ -44,10 +45,14 @@ open class FragmentDialogueBase : DialogFragment() {
 
 //Called to notify a listener that dialogue's positive button has been clicked
 interface IPositiveButtonListener {
-    fun onPositiveButtonClicked(dialogueId: String)
+    fun onPositiveButtonClicked(dialogueId: String, callerArgs: Bundle?)
 }
 
 //Called to notify a listener that dialogue's negative button has been clicked
 interface INegativeButtonListener {
-    fun onNegativeButtonClicked(dialogueId: String)
+    fun onNegativeButtonClicked(dialogueId: String, callerArgs: Bundle?)
+}
+
+interface ICancelListener {
+    fun onDialogueCancelled(dialogueId: String, callerArgs: Bundle?)
 }

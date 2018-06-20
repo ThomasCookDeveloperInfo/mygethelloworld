@@ -2,6 +2,6 @@
 <resources>
 
     <!--Used by the list view recycle view to specify distance between cells-->
-    <dimen name="vertical_cell_space">10dp</dimen>
+    <dimen name="core_vertical_cell_space">10dp</dimen>
 
 </resources>

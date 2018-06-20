@@ -85,7 +85,7 @@ private fun encryptWithRsaKey(toEncrypt: ByteArray, rsaKey: Key): ByteArray {
 
 // Retrieves the private part of the RSA key from the keystore
 private fun retrievePrivateRsaKey(keyStore: KeyStore): KeyStore.PrivateKeyEntry =
-        // Get the private key entry used to decrypt the encoded AES key
+// Get the private key entry used to decrypt the encoded AES key
         keyStore.getEntry(PRIVATE_RSA_KEY, null)
                 as KeyStore.PrivateKeyEntry
 
