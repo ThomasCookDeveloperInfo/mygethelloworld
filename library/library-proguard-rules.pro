@@ -25,6 +25,3 @@
 -keepclassmembers class kotlin.Metadata {
     public <methods>;
 }
-
-#Proguard for material dialogues library
--dontnote com.afollestad.materialdialogs.internal.MDTintHelper

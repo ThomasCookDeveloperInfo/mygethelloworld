@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -17,10 +16,6 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-        //test.java.srcDirs += 'src/test/kotlin'
-        //androidTest.java.srcDirs += 'src/androidTest/kotlin'
-        //debug.java.srcDirs += 'src/debug/kotlin'
-        //release.java.srcDirs += 'src/release/kotlin'
     }
 
     dataBinding {
@@ -29,26 +24,8 @@ android {
 }
 
 dependencies {
-    def materialDialoguesVersion = "0.9.6.0"
-    def androidSupportVersion = "26.1.0"
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: "$kotlin_version"
-
     kapt "com.android.databinding:compiler:$gradle_plugin_version"
-
-    implementation "com.android.support:appcompat-v7:$androidSupportVersion"
-    implementation "com.android.support:customtabs:$androidSupportVersion"
-    implementation "com.android.support:recyclerview-v7:$androidSupportVersion"
-    implementation "com.android.support:support-v13:$androidSupportVersion"
-
-    //Material dialogues
-    implementation group: 'com.afollestad.material-dialogs', name: 'commons', version: "$materialDialoguesVersion", {
-        exclude group: 'com.android.support', module: 'support-v13'
-        exclude group: 'com.android.support', module: 'recyclerview-v7'
-        exclude group: 'com.android.support', module: 'support-v4'
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
 }
